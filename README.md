@@ -1,5 +1,10 @@
 ## 📣 [프로젝트 WiKi](https://github.com/isaac56/todo-list/wiki)
 
+## 데모
+
+![team9](https://user-images.githubusercontent.com/73760074/114141470-93baf700-994c-11eb-9345-94a7ca658980.gif)
+
+
 ## 팀원
 |iOS|BackEnd|
 |---|---|
@@ -31,6 +36,9 @@
 - feature/"기능명": 개발하려는 기능명으로 완성 후 각 dev 브랜치에 PR 보내기
 
 
+## ERD
+
+![](https://github.com/isaac56/todo-list/blob/dev/BE/Doc/ERD.png?raw=true)
 
 # Server Api
 
