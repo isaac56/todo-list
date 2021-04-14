@@ -27,7 +27,7 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     }
     
     func contextMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIMenu {
-        return UIMenu(title: "", children: [moveToDoneMenu(tableView, for: indexPath)])
+        return UIMenu(title: "", children: [moveToDoneMenu(tableView, for: indexPath), deleteMenu(tableView, for: indexPath)])
     }
     
     func moveToDoneMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIAction {
@@ -43,7 +43,11 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
 //
 //    }
 //
-//    func deleteMenu(_ talbeView: UITableView, for indexPath: IndexPath) -> UIAction {
-//
-//    }
+    func deleteMenu(_ talbeView: UITableView, for indexPath: IndexPath) -> UIAction {
+        return UIAction(title: ContextMenu.Delete, attributes: .destructive) { action in
+            let index = ReverseIndex.get(with: indexPath.section, total: self.cardManager.count(states: self.identifier))
+            
+            self.cardManager.remove(states: self.identifier, at: index)
+        }
+    }
 }

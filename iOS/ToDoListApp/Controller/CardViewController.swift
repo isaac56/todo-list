@@ -115,10 +115,13 @@ class CardViewController: UIViewController ,CardDelegate {
         switch states {
         case .ToDo:
             self.todoBadge.label.text = "\(cardManager.count(states: .ToDo))"
+            toDoTableView.reloadData()
         case .InProgress:
             self.inProgressBadge.label.text  = "\(cardManager.count(states: .InProgress))"
+            inProgressTableView.reloadData()
         case .Done:
             self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
+            doneTableView.reloadData()
         }
     }
     

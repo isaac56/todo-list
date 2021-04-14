@@ -72,9 +72,6 @@ class CardManager: CardManageDelegate {
         
         self.remove(states: sourceState, at: sourceIndex)
         self.insert(at: destinationIndex, card: card)
-
-        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:sourceState])
-        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:destinationIdentifier])
     }
 }
 
