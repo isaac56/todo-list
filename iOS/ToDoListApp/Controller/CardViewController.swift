@@ -19,14 +19,15 @@ class CardViewController: UIViewController ,CardDelegate {
     
     private var cardManager = CardManager.shared
     
-    private var tableViewDelegate = ToDoTableViewDelegate()
-    
+    private var toDoTableViewDelegate = ToDoTableViewDelegate(identifier: .ToDo)
     private var toDoTableViewDataSource = ToDoTableViewDataSource(identifier: .ToDo)
     private var toDoTableViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .ToDo)
     
+    private var inProgressViewDelegate = ToDoTableViewDelegate(identifier: .InProgress)
     private var inProgressViewDataSource = ToDoTableViewDataSource(identifier: .InProgress)
     private var inProgressViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .InProgress)
     
+    private var doneViewDelegate = ToDoTableViewDelegate(identifier: .Done)
     private var doneViewDataSource = ToDoTableViewDataSource(identifier: .Done)
     private var doneViewDragDropDelegate = ToDoTableViewDragDropDelegate(identifier: .Done)
     
@@ -44,19 +45,19 @@ class CardViewController: UIViewController ,CardDelegate {
     }
     
     func configureDelegate() {
-        toDoTableView.delegate = tableViewDelegate
+        toDoTableView.delegate = toDoTableViewDelegate
         toDoTableView.dataSource = toDoTableViewDataSource
         toDoTableView.dragDelegate = toDoTableViewDragDropDelegate
         toDoTableView.dropDelegate = toDoTableViewDragDropDelegate
         toDoTableView.dragInteractionEnabled = true
         
-        inProgressTableView.delegate = tableViewDelegate
+        inProgressTableView.delegate = inProgressViewDelegate
         inProgressTableView.dataSource = inProgressViewDataSource
         inProgressTableView.dragDelegate = inProgressViewDragDropDelegate
         inProgressTableView.dropDelegate = inProgressViewDragDropDelegate
         inProgressTableView.dragInteractionEnabled = true
         
-        doneTableView.delegate = tableViewDelegate
+        doneTableView.delegate = doneViewDelegate
         doneTableView.dataSource = doneViewDataSource
         doneTableView.dragDelegate = doneViewDragDropDelegate
         doneTableView.dropDelegate = doneViewDragDropDelegate
@@ -109,7 +110,7 @@ class CardViewController: UIViewController ,CardDelegate {
     
     //MARK: objc 처리
     @objc func changeBadge(notification: Notification) {
-        guard let states = notification.userInfo?[NotificationUserInfoKey.sourceStates] as? States else { return }
+        guard let states = notification.userInfo?[NotificationUserInfoKey.needUpdateStatees] as? States else { return }
         
         switch states {
         case .ToDo:
@@ -122,7 +123,7 @@ class CardViewController: UIViewController ,CardDelegate {
     }
     
     @objc func cardMove(notification: Notification) {
-        guard let states = notification.userInfo?[NotificationUserInfoKey.sourceStates] as? States else { return }
+        guard let states = notification.userInfo?[NotificationUserInfoKey.needUpdateStatees] as? States else { return }
         
         switch states {
         case .ToDo:

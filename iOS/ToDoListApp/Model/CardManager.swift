@@ -41,17 +41,17 @@ class CardManager: CardManageDelegate {
     
     func add(card: Card) {
         self.cardDic[card.states]?.append(card)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:card.states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:card.states])
     }
     
     func remove(states: States, at index: Int) {
         self.cardDic[states]!.remove(at: index)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:states])
     }
     
     func insert(at index: Int, card: Card) {
         self.cardDic[card.states]?.insert(card, at: index)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:card.states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:card.states])
     }
     
     func getCard(states: States, at index: Int) -> Card {
@@ -73,7 +73,8 @@ class CardManager: CardManageDelegate {
         self.remove(states: sourceState, at: sourceIndex)
         self.insert(at: destinationIndex, card: card)
 
-        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.sourceStates:sourceState])
+        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:sourceState])
+        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:destinationIdentifier])
     }
 }
 
