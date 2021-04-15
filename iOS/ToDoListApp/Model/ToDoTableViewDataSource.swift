@@ -37,7 +37,6 @@ class ToDoTableViewDataSource : NSObject, UITableViewDataSource {
         if editingStyle == .delete {
             let index = tableView.numberOfSections - indexPath.section - 1
             cardManager.remove(states: identifier, at: index)
-            tableView.reloadData()
         }
     }
 }

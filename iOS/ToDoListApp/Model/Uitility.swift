@@ -14,5 +14,11 @@ enum States: String {
 }
 
 enum NotificationUserInfoKey {
-    static let sourceStates = "sourceStates"
+    static let needUpdateStatees = "needUpdateStates"
+}
+
+enum ContextMenu {
+    static let MoveToDone = "완료한 일로 이동"
+    static let Edit = "수정하기"
+    static let Delete = "삭제하기"
 }

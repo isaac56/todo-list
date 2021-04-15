@@ -15,7 +15,7 @@ protocol CardManageDelegate {
 }
 
 class CardManager: CardManageDelegate {
-
+    
     var cardDic: Dictionary<States, [Card]>
     
     static let shared = CardManager()
@@ -41,17 +41,17 @@ class CardManager: CardManageDelegate {
     
     func add(card: Card) {
         self.cardDic[card.states]?.append(card)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:card.states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:card.states])
     }
     
     func remove(states: States, at index: Int) {
         self.cardDic[states]!.remove(at: index)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:states])
     }
     
     func insert(at index: Int, card: Card) {
         self.cardDic[card.states]?.insert(card, at: index)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:card.states])
+        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:card.states])
     }
     
     func getCard(states: States, at index: Int) -> Card {
@@ -65,15 +65,14 @@ class CardManager: CardManageDelegate {
         let card = draggedCard.cardInfo
         let sourceIndex = ReverseIndex.get(with: draggedCard.index, total: self.count(states: card.states))
         let sourceState = card.states
-
-        let destinationIndex = ReverseIndex.get(with: destinationIndexPath.section, total: self.count(states: destinationIdentifier) + 1)
-
+        print("origin destination: \(destinationIndexPath.section)")
+        let destinationIndex = ReverseIndex.get(with: destinationIndexPath.section, total: self.count(states: destinationIdentifier)) + 1
+        
         card.states = destinationIdentifier
         
+        print("source: \(sourceIndex) -> destination: \(destinationIndex)")
         self.remove(states: sourceState, at: sourceIndex)
         self.insert(at: destinationIndex, card: card)
-
-        NotificationCenter.default.post(name: CardManager.cardMove, object: self, userInfo: [NotificationUserInfoKey.sourceStates:sourceState])
     }
 }
 
