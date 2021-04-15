@@ -8,9 +8,9 @@
 import Foundation
 
 enum States: String {
-    case ToDo = "ToDo"
-    case InProgress = "InProgress"
-    case Done = "Done"
+    case ToDo = "todo"
+    case InProgress = "doing"
+    case Done = "done"
 }
 
 enum NotificationUserInfoKey {

@@ -8,19 +8,28 @@
 import Foundation
 
 class Card {
+    var id: Int
     var title: String
     var body: String
     var author: String
     var date: Date
+    var priority: Double
     var states: States
     
-    
-    init(title: String, body: String, author: String, states: States) {
+    init(id: Int, title: String, body: String, author: String, date: Date, priority: Double, states: States) {
+        self.id = id
         self.title = title
         self.body = body
         self.author = author
-        self.date = Date()
+        self.date = date
+        self.priority = priority
         self.states = states
+    }
+    
+    convenience init(title: String, body: String, states: States, id: Int = 0, priority: Double = 0) {
+        let author = "author by iOS"
+        let date = Date()
+        self.init(id: id, title: title, body: body, author: author, date: date, priority: priority, states: states)
     }
 }
 

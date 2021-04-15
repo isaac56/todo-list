@@ -22,9 +22,12 @@ class CardManager: CardManageDelegate {
     
     private init() {
         self.cardDic = [:]
-        self.cardDic[.ToDo] = [Card(title: "코드스쿼드가기", body: "오늘은비모랑 코드스쿼드 가는날~", author: "iOS", states: .ToDo),Card(title: "빡공하기", body: "오늘은 비모랑 빡공하는날~~", author: "iOS", states: .ToDo)]
-        self.cardDic[.InProgress] = [Card(title: "열심히 프로그래밍하기", body: "오늘하루도 화이팅", author: "iOS", states: .InProgress)]
-        self.cardDic[.Done] = [Card(title: "우아아아이이", body: "우어어어어", author: "iOS", states: .Done)]
+        self.cardDic[.ToDo] = []
+        self.cardDic[.InProgress] = []
+        self.cardDic[.Done] = []
+//        self.cardDic[.ToDo] = [Card(title: "코드스쿼드가기", body: "오늘은비모랑 코드스쿼드 가는날~", author: "iOS", states: .ToDo),Card(title: "빡공하기", body: "오늘은 비모랑 빡공하는날~~", author: "iOS", states: .ToDo)]
+//        self.cardDic[.InProgress] = [Card(title: "열심히 프로그래밍하기", body: "오늘하루도 화이팅", author: "iOS", states: .InProgress)]
+//        self.cardDic[.Done] = [Card(title: "우아아아이이", body: "우어어어어", author: "iOS", states: .Done)]
     }
     
     func count(states: States) -> Int {
@@ -45,8 +48,13 @@ class CardManager: CardManageDelegate {
     }
     
     func remove(states: States, at index: Int) {
-        self.cardDic[states]!.remove(at: index)
-        NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:states])
+        let id = self.cardDic[states]![index].id
+        NetworkManager.delete(id: id) { completion in
+            if completion {
+                self.cardDic[states]!.remove(at: index)
+                NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:states])
+            }
+        }
     }
     
     func insert(at index: Int, card: Card) {
@@ -56,7 +64,7 @@ class CardManager: CardManageDelegate {
     
     func getCard(states: States, at index: Int) -> Card {
         guard let cards = cardDic[states] else {
-            return Card(title: "", body: "", author: "", states: .InProgress)
+            return Card(title: "", body: "", states: .InProgress)
         }
         return cards[index]
     }

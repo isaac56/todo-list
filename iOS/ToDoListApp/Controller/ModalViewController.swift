@@ -2,7 +2,7 @@
 import UIKit
 
 protocol CardDelegate {
-    func cardData(_ card: Card)
+    func receiveCardData(_ card: Card)
 }
 
 
@@ -90,7 +90,8 @@ class ModalViewController: UIViewController {
         }
         
         let card = cardMaker.makeCard(title: title, content: content)
-        self.cardDelegate.cardData(card)
+        NetworkManager.post(card: card)
+        self.cardDelegate.receiveCardData(card)
         
         self.dismiss(animated: true, completion: nil)
     }
