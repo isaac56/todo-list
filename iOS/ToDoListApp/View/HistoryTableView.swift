@@ -9,12 +9,17 @@ import UIKit
 
 class HistoryTableView: UITableView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        configureCell()
     }
-    */
+    
+    func configureCell() {
+        let nibName = UINib(nibName: "HistoryCell", bundle: nil)
+        self.register(nibName, forCellReuseIdentifier: "historyCell")
+        self.rowHeight = UITableView.automaticDimension
+        self.estimatedRowHeight = 137
+        self.separatorStyle = .none
+    }
 
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,13 @@
 		CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */; };
 		CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */; };
 		D13AE5688F1B2DCE52BCE907 /* Pods_ToDoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293DA60F92FA9B559EBD8F2E /* Pods_ToDoListApp.framework */; };
+		FF0BDF86262811AA00A580B6 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDF85262811AA00A580B6 /* SideBarViewController.swift */; };
+		FF0BDF8A262813B300A580B6 /* SideBarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDF89262813B300A580B6 /* SideBarNavigation.swift */; };
+		FF0BDF902628185F00A580B6 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF0BDF8E2628185F00A580B6 /* HistoryCell.xib */; };
+		FF0BDF9726281EDD00A580B6 /* HistoryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDF9626281EDD00A580B6 /* HistoryTableViewDataSource.swift */; };
+		FF0BDF9A262823A800A580B6 /* HistoryTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDF99262823A800A580B6 /* HistoryTableViewDelegate.swift */; };
+		FF0BDFA1262824FA00A580B6 /* HistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDFA0262824FA00A580B6 /* HistoryTableView.swift */; };
+		FF0BDFA92628254400A580B6 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BDFA72628254400A580B6 /* HistoryCell.swift */; };
 		FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61935261D4ED20033D622 /* AppDelegate.swift */; };
 		FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61937261D4ED20033D622 /* SceneDelegate.swift */; };
 		FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61939261D4ED20033D622 /* ViewController.swift */; };
@@ -56,6 +63,13 @@
 		CEA19A1726249A19008B270E /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextFieldDelegate.swift; sourceTree = "<group>"; };
 		CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextViewDelegate.swift; sourceTree = "<group>"; };
+		FF0BDF85262811AA00A580B6 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		FF0BDF89262813B300A580B6 /* SideBarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarNavigation.swift; sourceTree = "<group>"; };
+		FF0BDF8E2628185F00A580B6 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		FF0BDF9626281EDD00A580B6 /* HistoryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewDataSource.swift; sourceTree = "<group>"; };
+		FF0BDF99262823A800A580B6 /* HistoryTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewDelegate.swift; sourceTree = "<group>"; };
+		FF0BDFA0262824FA00A580B6 /* HistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableView.swift; sourceTree = "<group>"; };
+		FF0BDFA72628254400A580B6 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		FFC61932261D4ED20033D622 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC61935261D4ED20033D622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFC61937261D4ED20033D622 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,7 +102,6 @@
 				8C159C7D27DD27251E6F6D4E /* Pods-ToDoListApp.debug.xcconfig */,
 				2209CBA9E65CD0CE341088C2 /* Pods-ToDoListApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -161,9 +174,12 @@
 			isa = PBXGroup;
 			children = (
 				CE9A2B2C261EDB6C0097A940 /* CardTableView.swift */,
+				FF0BDFA0262824FA00A580B6 /* HistoryTableView.swift */,
 				CE5ED8A8261D8B9800789822 /* BadgeView.swift */,
 				CE5ED8CA261E003900789822 /* CardCell.swift */,
 				CE5ED8CB261E003900789822 /* CardCell.xib */,
+				FF0BDFA72628254400A580B6 /* HistoryCell.swift */,
+				FF0BDF8E2628185F00A580B6 /* HistoryCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +190,8 @@
 				FFC61939261D4ED20033D622 /* ViewController.swift */,
 				CE9A2B29261EDA3B0097A940 /* CardViewController.swift */,
 				CE9A2B38261EF6CE0097A940 /* ModalViewController.swift */,
+				FF0BDF85262811AA00A580B6 /* SideBarViewController.swift */,
+				FF0BDF89262813B300A580B6 /* SideBarNavigation.swift */,
 				FFCD3B22262696D000319EE1 /* Delegates */,
 			);
 			path = Controller;
@@ -188,6 +206,8 @@
 				FFCD3B2826269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift */,
 				CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */,
 				CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */,
+				FF0BDF9626281EDD00A580B6 /* HistoryTableViewDataSource.swift */,
+				FF0BDF99262823A800A580B6 /* HistoryTableViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -255,6 +275,7 @@
 				FFC6193F261D4ED60033D622 /* Assets.xcassets in Resources */,
 				FFC6193D261D4ED20033D622 /* Main.storyboard in Resources */,
 				CE5ED8CD261E003900789822 /* CardCell.xib in Resources */,
+				FF0BDF902628185F00A580B6 /* HistoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */,
+				FF0BDF9A262823A800A580B6 /* HistoryTableViewDelegate.swift in Sources */,
 				CEB0D08026208945002BC69D /* ModalTextViewDelegate.swift in Sources */,
 				CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */,
 				CEA19A122624136D008B270E /* SizeManager.swift in Sources */,
@@ -316,16 +338,21 @@
 				CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */,
 				FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */,
 				CEA19A1826249A19008B270E /* ButtonManager.swift in Sources */,
+				FF0BDFA1262824FA00A580B6 /* HistoryTableView.swift in Sources */,
 				CE6A1E7D2627200C00100D04 /* JsonModel.swift in Sources */,
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
 				FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */,
+				FF0BDF8A262813B300A580B6 /* SideBarNavigation.swift in Sources */,
 				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
 				CE6A1E752626D36A00100D04 /* NetworkManager.swift in Sources */,
+				FF0BDF9726281EDD00A580B6 /* HistoryTableViewDataSource.swift in Sources */,
+				FF0BDFA92628254400A580B6 /* HistoryCell.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
 				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
 				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
 				FFC6197A261EEB1A0033D622 /* Card.swift in Sources */,
 				FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */,
+				FF0BDF86262811AA00A580B6 /* SideBarViewController.swift in Sources */,
 				CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */,
 				FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */,
 				CE6A1E792627196400100D04 /* DataManager.swift in Sources */,

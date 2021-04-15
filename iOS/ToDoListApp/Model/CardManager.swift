@@ -53,7 +53,7 @@ class CardManager: CardManageDelegate {
         NetworkManager.delete(id: id) { completion in
             if completion {
                 self.cardDic[states]!.remove(at: index)
-                NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.sourceStates:states])
+                NotificationCenter.default.post(name: CardManager.changeCardCount, object: self, userInfo: [NotificationUserInfoKey.needUpdateStatees:states])
             }
         }
     }
