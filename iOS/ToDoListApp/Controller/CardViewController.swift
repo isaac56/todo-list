@@ -37,6 +37,7 @@ class CardViewController: UIViewController ,CardDelegate {
         configureNotification()
         configureDelegate()
         configureBadge()
+        NetworkManager.getAllCardList()
     }
     
     func configureNotification() {
@@ -70,8 +71,11 @@ class CardViewController: UIViewController ,CardDelegate {
         self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
     }
     
-    func cardData(_ card: Card) {
+    func receiveCardData(_ card: Card) {
         self.cardManager.add(card: card)
+    }
+    
+    func tableViewReloadDate() {
         self.toDoTableView.reloadData()
         self.inProgressTableView.reloadData()
         self.doneTableView.reloadData()
@@ -123,6 +127,7 @@ class CardViewController: UIViewController ,CardDelegate {
             self.doneBadge.label.text  = "\(cardManager.count(states: .Done))"
             doneTableView.reloadData()
         }
+        tableViewReloadDate()
     }
     
     @objc func cardMove(notification: Notification) {
