@@ -10,6 +10,9 @@
 		CE5ED8A9261D8B9800789822 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8A8261D8B9800789822 /* BadgeView.swift */; };
 		CE5ED8CC261E003900789822 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5ED8CA261E003900789822 /* CardCell.swift */; };
 		CE5ED8CD261E003900789822 /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE5ED8CB261E003900789822 /* CardCell.xib */; };
+		CE6A1E752626D36A00100D04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A1E742626D36A00100D04 /* NetworkManager.swift */; };
+		CE6A1E792627196400100D04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A1E782627196400100D04 /* DataManager.swift */; };
+		CE6A1E7D2627200C00100D04 /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6A1E7C2627200C00100D04 /* JsonModel.swift */; };
 		CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */; };
 		CE9A2B20261E9AFE0097A940 /* ToDoTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */; };
 		CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A2B29261EDA3B0097A940 /* CardViewController.swift */; };
@@ -36,6 +39,9 @@
 		CE5ED8A8261D8B9800789822 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		CE5ED8CA261E003900789822 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		CE5ED8CB261E003900789822 /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
+		CE6A1E742626D36A00100D04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CE6A1E782627196400100D04 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CE6A1E7C2627200C00100D04 /* JsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
 		CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDataSource.swift; sourceTree = "<group>"; };
 		CE9A2B1F261E9AFE0097A940 /* ToDoTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewDelegate.swift; sourceTree = "<group>"; };
 		CE9A2B29261EDA3B0097A940 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE6A1E732626D16100100D04 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE6A1E742626D36A00100D04 /* NetworkManager.swift */,
+				CE6A1E782627196400100D04 /* DataManager.swift */,
+				CE6A1E7C2627200C00100D04 /* JsonModel.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FFC61929261D4ED20033D622 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +111,7 @@
 				FFC61940261D4ED60033D622 /* LaunchScreen.storyboard */,
 				FFC61943261D4ED60033D622 /* Info.plist */,
 				FFC61980261EEB620033D622 /* Controller */,
+				CE6A1E732626D16100100D04 /* Network */,
 				FFC6197F261EEB570033D622 /* View */,
 				FFC6197E261EEB4D0033D622 /* Model */,
 			);
@@ -230,9 +247,11 @@
 				CE9A2B39261EF6CE0097A940 /* ModalViewController.swift in Sources */,
 				FFC6197C261EEB1A0033D622 /* Uitility.swift in Sources */,
 				CEA19A1826249A19008B270E /* ButtonManager.swift in Sources */,
+				CE6A1E7D2627200C00100D04 /* JsonModel.swift in Sources */,
 				CE9A2B1D261E9A600097A940 /* ToDoTableViewDataSource.swift in Sources */,
 				FFCD3B2926269AEE00319EE1 /* ToDoTableViewDragDropDelegate.swift in Sources */,
 				CE5ED8CC261E003900789822 /* CardCell.swift in Sources */,
+				CE6A1E752626D36A00100D04 /* NetworkManager.swift in Sources */,
 				FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */,
 				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
 				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
@@ -240,6 +259,7 @@
 				FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */,
 				CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */,
 				FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */,
+				CE6A1E792627196400100D04 /* DataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
