@@ -15,7 +15,7 @@ protocol CardManageDelegate {
 }
 
 class CardManager: CardManageDelegate {
-
+    
     var cardDic: Dictionary<States, [Card]>
     
     static let shared = CardManager()
@@ -65,11 +65,12 @@ class CardManager: CardManageDelegate {
         let card = draggedCard.cardInfo
         let sourceIndex = ReverseIndex.get(with: draggedCard.index, total: self.count(states: card.states))
         let sourceState = card.states
-
-        let destinationIndex = ReverseIndex.get(with: destinationIndexPath.section, total: self.count(states: destinationIdentifier) + 1)
-
+        print("origin destination: \(destinationIndexPath.section)")
+        let destinationIndex = ReverseIndex.get(with: destinationIndexPath.section, total: self.count(states: destinationIdentifier)) + 1
+        
         card.states = destinationIdentifier
         
+        print("source: \(sourceIndex) -> destination: \(destinationIndex)")
         self.remove(states: sourceState, at: sourceIndex)
         self.insert(at: destinationIndex, card: card)
     }

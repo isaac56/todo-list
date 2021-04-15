@@ -58,7 +58,6 @@ extension ToDoTableViewDragDropDelegate: UITableViewDropDelegate {
                 tableView.beginUpdates()
                 self.moveItem(at: sourceIntePath.section, to: destinationIndexPath.section)
                 tableView.endUpdates()
-                
                 tableView.reloadData()
             } else if let draggedCard = item.dragItem.localObject as? DraggedCard {
                 cardManager.moveCard(draggedCard: draggedCard, destinationIndexPath: destinationIndexPath, destinationIdentifier: identifier)
