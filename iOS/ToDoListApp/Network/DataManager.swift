@@ -57,7 +57,7 @@ class DataManager {
     
     static func encode(card: Card) -> Data? {
         let encoder = JSONEncoder()
-        let jsonCard = postJsonCard(title: card.title, content: card.body, columnType: card.states.rawValue.uppercased())
+        let jsonCard = postJsonCard(title: card.title, content: card.body, columnType: statesToInt(states: card.states))
         
         let encodedCard = try? encoder.encode(jsonCard)
         if let encodedCard = encodedCard {
@@ -86,6 +86,41 @@ class DataManager {
             return encodedCard
         } else {
             return nil
+        }
+    }
+    
+    static func statesToInt(states: States) -> Int {
+        switch states {
+        case .ToDo:
+            return 0
+        case .InProgress:
+            return 1
+        case .Done:
+            return 2
+        }
+    }
+    
+    static func intToStates(value: Int) -> States {
+        switch value {
+        case 0:
+            return .ToDo
+        case 1:
+            return .InProgress
+        case 2:
+            return .Done
+        default:
+            return .ToDo
+        }
+    }
+    
+    static func statesToString(states: States) -> String {
+        switch states {
+        case .Done:
+            return "done"
+        case .InProgress:
+            return "doing"
+        case .ToDo:
+            return "todo"
         }
     }
 }

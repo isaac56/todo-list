@@ -13,7 +13,9 @@ class NetworkManager {
     }
     
     static func getCardList(httpMethod: String, states: States) {
-        let url = URL(string: "http://13.209.62.240:8080/api/cards/\(states.rawValue)")
+        // rawVlue 바꾸기!!!
+        let domainState = DataManager.statesToString(states: states)
+        let url = URL(string: "http://13.209.62.240:8080/api/cards/\(domainState)")
         var request = URLRequest(url: url!)
         request.httpMethod = httpMethod
         URLSession.shared.dataTask(with: request) { data, response, error in

@@ -23,15 +23,15 @@ struct JsonMoveResponseBox: Codable {
 struct postJsonCard: Codable {
     let title: String
     let content: String
-    let columnType: String
+    let columnType: Int
 }
 
 // MARK: Box 내부 Card
 struct JsonCard: Codable {
-    let id, user: Int
+    let id: Int
     let title, content: String
     let priority: Double
-    let columnType: String
+    let columnType: Int
     let deleted: Bool
 }
 
@@ -44,16 +44,17 @@ struct JsonHistoryBox: Codable {
 
 struct JsonHistory: Codable {
     let cardTitle: String
-    let action: String
+    let action: Int
     let date: String
-    let from: String?
-    let to: String?
+    let from: Int?
+    let to: Int?
+}
 
 struct JsonMoveResponseCard: Codable {
     let id: Int
     let title, content: String
     let priority: Double
-    let columnType: String
+    let columnType: Int
     let deleted: Bool
     let rebalanced: Bool
 }

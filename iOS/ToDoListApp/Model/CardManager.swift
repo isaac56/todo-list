@@ -114,7 +114,9 @@ class CardManager: CardManageDelegate {
         if let endIndex = self.cardDic[states]?.endIndex, index != endIndex {
             movingInfo.nextCardId = self.cardDic[states]?[index].id
         }
-        movingInfo.to = states.rawValue.uppercased()
+        
+        // states to int 로 바꾸기
+        movingInfo.to = DataManager.statesToInt(states: states)
         return movingInfo
     }
     
