@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import team9.todo.domain.ApiResult;
-import team9.todo.domain.Card;
-import team9.todo.domain.DTO.Card.RequestCreateDTO;
-import team9.todo.domain.DTO.Card.RequestMoveDTO;
-import team9.todo.domain.DTO.Card.RequestUpdateDTO;
-import team9.todo.domain.DTO.Card.ResponseMovedDTO;
+import team9.todo.domain.DTO.Card.*;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
 import team9.todo.service.CardService;
@@ -33,7 +29,7 @@ public class ApiCardController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ApiResult<Card> create(@RequestBody RequestCreateDTO card, HttpSession httpSession) {
+    public ApiResult<ResponseDTO> create(@RequestBody RequestCreateDTO card, HttpSession httpSession) {
         logger.debug("card 생성 요청: {}, {}, {}", card.getColumnType(), card.getTitle(), card.getContent());
         User user = getUser(httpSession);
 
@@ -41,7 +37,7 @@ public class ApiCardController {
     }
 
     @GetMapping("/todo")
-    public ApiResult<List<Card>> getTodo(HttpSession httpSession) {
+    public ApiResult<List<ResponseDTO>> getTodo(HttpSession httpSession) {
         logger.debug("{}의 카드 목록 요청", CardColumn.TODO.name());
         User user = getUser(httpSession);
 
@@ -49,7 +45,7 @@ public class ApiCardController {
     }
 
     @GetMapping("/doing")
-    public ApiResult<List<Card>> getDoing(HttpSession httpSession) {
+    public ApiResult<List<ResponseDTO>> getDoing(HttpSession httpSession) {
         logger.debug("{}의 카드 목록 요청", CardColumn.DOING.name());
         User user = getUser(httpSession);
 
@@ -57,7 +53,7 @@ public class ApiCardController {
     }
 
     @GetMapping("/done")
-    public ApiResult<List<Card>> getDone(HttpSession httpSession) {
+    public ApiResult<List<ResponseDTO>> getDone(HttpSession httpSession) {
         logger.debug("{}의 카드 목록 요청", CardColumn.DONE.name());
         User user = getUser(httpSession);
 
@@ -65,7 +61,7 @@ public class ApiCardController {
     }
 
     @PutMapping("/{cardId}")
-    public ApiResult<Card> update(@PathVariable long cardId, @RequestBody RequestUpdateDTO requestUpdateDTO, HttpSession httpSession) {
+    public ApiResult<ResponseDTO> update(@PathVariable long cardId, @RequestBody RequestUpdateDTO requestUpdateDTO, HttpSession httpSession) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         User user = getUser(httpSession);
 
