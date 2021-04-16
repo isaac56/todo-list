@@ -38,6 +38,7 @@ class CardViewController: UIViewController ,CardDelegate {
         configureDelegate()
         configureBadge()
         NetworkManager.getAllCardList()
+        configureEditCardContextMenu()
     }
     
     func configureNotification() {
@@ -75,10 +76,31 @@ class CardViewController: UIViewController ,CardDelegate {
         self.cardManager.add(card: card)
     }
     
+    func receiveEditedCardData(_ card: Card, index: Int) {
+        self.cardManager.edit(card: card, index: index)
+        tableViewReloadDate()
+    }
+    
     func tableViewReloadDate() {
         self.toDoTableView.reloadData()
         self.inProgressTableView.reloadData()
         self.doneTableView.reloadData()
+    }
+    
+    func configureEditCardContextMenu() {
+        self.toDoTableViewDelegate.editMenuPressed { card, index in
+            self.presentEditModalViewController(card: card, index: index)
+        }
+    }
+    
+    func presentEditModalViewController(card: Card, index: Int) {
+        guard let modalViewController = self.storyboard?.instantiateViewController(identifier: "modalViewController") as? ModalViewController
+        else {
+            return
+        }
+        modalViewController.setUpCardDelegate(state: card.states, delegate: self)
+        modalViewController.receiveEditCard(card: card, index: index)
+        self.present(modalViewController, animated: true, completion: nil)
     }
     
     //MARK: IBAction 처리

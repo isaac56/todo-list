@@ -5,8 +5,8 @@ import UIKit
 class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     
     var cardManager = CardManager.shared
-    
     var identifier: States
+    var sendEditingCard : ((Card, Int) -> Void)!
     
     init(identifier: States) {
         self.identifier = identifier
@@ -27,7 +27,7 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
     }
     
     func contextMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIMenu {
-        return UIMenu(title: "", children: [moveToDoneMenu(tableView, for: indexPath), deleteMenu(tableView, for: indexPath)])
+        return UIMenu(title: "", children: [moveToDoneMenu(tableView, for: indexPath), editMenu(tableView, for: indexPath),deleteMenu(tableView, for: indexPath)])
     }
     
     func moveToDoneMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIAction {
@@ -39,10 +39,18 @@ class ToDoTableViewDelegate: NSObject, UITableViewDelegate {
         }
     }
     
-//    func editMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIAction {
-//
-//    }
-//
+    func editMenu(_ tableView: UITableView, for indexPath: IndexPath) -> UIAction {
+        return UIAction(title: ContextMenu.Edit) { action in
+            let index = ReverseIndex.get(with: indexPath.section, total: self.cardManager.count(states: self.identifier))
+            let card = self.cardManager.getCard(states: self.identifier, at: index)
+            self.sendEditingCard(card, index)
+        }
+    }
+    
+    func editMenuPressed(closure: @escaping (Card, Int) -> Void) {
+        self.sendEditingCard = closure
+    }
+    
     func deleteMenu(_ talbeView: UITableView, for indexPath: IndexPath) -> UIAction {
         return UIAction(title: ContextMenu.Delete, attributes: .destructive) { action in
             let index = ReverseIndex.get(with: indexPath.section, total: self.cardManager.count(states: self.identifier))

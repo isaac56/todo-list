@@ -108,7 +108,7 @@
                                             <action selector="cancelButtonPressed:" destination="DqU-d2-HbO" eventType="touchUpInside" id="tHx-ud-q2O"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY8-ub-7oL">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY8-ub-7oL">
                                         <rect key="frame" x="276" y="119" width="108" height="40"/>
                                         <color key="backgroundColor" red="0.51592824168374873" green="0.8557572922895923" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>

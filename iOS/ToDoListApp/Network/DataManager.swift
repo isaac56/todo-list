@@ -34,6 +34,16 @@ class DataManager {
         }
     }
     
+    static func decodeMoveResponse(data: Data) -> JsonMoveResponseBox? {
+        let decoder = JSONDecoder()
+        let jsonMoveResponseBox = try? decoder.decode(JsonMoveResponseBox.self, from: data)
+        if let jsonMoveResponseBox = jsonMoveResponseBox {
+            return jsonMoveResponseBox
+        } else {
+            return nil
+        }
+    }
+    
     static func encode(card: Card) -> Data? {
         let encoder = JSONEncoder()
         let jsonCard = postJsonCard(title: card.title, content: card.body, columnType: card.states.rawValue.uppercased())
@@ -46,16 +56,25 @@ class DataManager {
         }
     }
     
-    static func stringToStates(string: String) -> States {
-        switch string {
-        case "TODO":
-            return .ToDo
-        case "DOING":
-            return .InProgress
-        case "DONE":
-            return .Done
-        default:
-            return .ToDo
+    static func encode(movingInfo: MovingInfo) -> Data? {
+        let encoder = JSONEncoder()
+        let encodedInfo = try? encoder.encode(movingInfo)
+        if let encodedInfo = encodedInfo {
+            return encodedInfo
+        } else {
+            return nil
+        }
+    }
+    
+    static func encode(editedCard: Card) -> Data? {
+        let encoder = JSONEncoder()
+        let jsonEditCard = JsonEditCard(title: editedCard.title, content: editedCard.body, priority: editedCard.priority)
+        let encodedInfo = try? encoder.encode(jsonEditCard)
+        
+        if let encodedCard = encodedInfo {
+            return encodedCard
+        } else {
+            return nil
         }
     }
 }

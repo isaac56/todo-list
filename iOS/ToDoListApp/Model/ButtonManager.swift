@@ -4,10 +4,12 @@ import Foundation
 class ButtonManager {
     private var titleText: Bool
     private var contentText: Bool
+    private var isEditMode: Bool
     
     init() {
         self.titleText = false
         self.contentText = false
+        self.isEditMode = false
     }
     
     func change(title: String) {
@@ -22,8 +24,12 @@ class ButtonManager {
                                         userInfo: [ButtonState.isEnable:isTextFull()])
     }
     
+    func setEditMode() {
+        self.isEditMode = true
+    }
+    
     func isTextFull() -> Bool {
-        return titleText && contentText
+        return isEditMode == true ? titleText || contentText : titleText && contentText
     }
 }
 
