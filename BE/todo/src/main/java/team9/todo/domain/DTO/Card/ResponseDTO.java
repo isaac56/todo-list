@@ -16,7 +16,7 @@ public class ResponseDTO {
 
     private boolean deleted;
 
-    private ResponseDTO(Long id, String title, String content, double priority, CardColumn columnType, boolean deleted) {
+    ResponseDTO(Long id, String title, String content, double priority, CardColumn columnType, boolean deleted) {
         this.id = id;
         this.title = title;
         this.content = content;
