@@ -10,15 +10,15 @@ public class ResponseDTO {
     private final String cardTitle;
     private final int action;
     private final LocalDateTime date;
-    private final int from;
-    private final int to;
+    private final Integer from;
+    private final Integer to;
 
-    public ResponseDTO(String cardTitle, HistoryAction action, LocalDateTime date, CardColumn from, CardColumn to) {
+    private ResponseDTO(String cardTitle, HistoryAction action, LocalDateTime date, CardColumn from, CardColumn to) {
         this.cardTitle = cardTitle;
         this.action = action.ordinal();
         this.date = date;
-        this.from = from.ordinal();
-        this.to = to.ordinal();
+        this.from = from != null ? from.ordinal() : null;
+        this.to = to != null ? to.ordinal() : null;
     }
 
     public static ResponseDTO of(HistoryWithCardTitle entity) {
@@ -38,11 +38,11 @@ public class ResponseDTO {
         return date;
     }
 
-    public int getFrom() {
+    public Integer getFrom() {
         return from;
     }
 
-    public int getTo() {
+    public Integer getTo() {
         return to;
     }
 }
