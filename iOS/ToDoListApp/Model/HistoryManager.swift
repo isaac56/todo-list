@@ -32,6 +32,7 @@ class HistoryManager {
     
     func setHistoryImage(at index: Int) -> UIImage {
         let action = historys[index].action
+
         guard let image = UIImage(named: "\(action).png") else {
             return UIImage()
         }
@@ -39,6 +40,7 @@ class HistoryManager {
     }
     
     func classify(with history: JsonHistory) -> String {
+        print(history.action)
         switch history.action {
         case 0:
             return addHistoryForm(with: history)
@@ -59,7 +61,10 @@ class HistoryManager {
     }
     
     func moveHistoryForm(with history: JsonHistory) -> String {
-        return "\(history.cardTitle) 을(를) \(history.from!)에서 \(history.to!)로 이동하였습니다."
+        let from = swtichStates(states: history.from!)
+        let to = swtichStates(states: history.to!)
+        
+        return "\(history.cardTitle) 을(를) \(from)에서 \(to)로 이동하였습니다."
     }
     
     func removeHistoryForm(with history: JsonHistory) -> String {

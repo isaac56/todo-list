@@ -85,7 +85,7 @@ class NetworkManager {
                     NotificationCenter.default.post(name: HistoryManager.completeLoadHistory, object: historyDelegate)
                 }
             }
-        }
+        }.resume()
     }
 
     static func move(movingInfo: MovingInfo, id: Int, completion: @escaping (Bool) -> Void) {
