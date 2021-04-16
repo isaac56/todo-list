@@ -35,6 +35,7 @@
 		FF5A09902629204300234FFB /* ToDoListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A098F2629204300234FFB /* ToDoListAppTests.swift */; };
 		FF5A099D262921E100234FFB /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A099C262921E100234FFB /* DateManager.swift */; };
 		FF5A09A22629234400234FFB /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5A099C262921E100234FFB /* DateManager.swift */; };
+		CEE11FC026290DAE002D7C55 /* EditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE11FBF26290DAE002D7C55 /* EditManager.swift */; };
 		FFC61936261D4ED20033D622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61935261D4ED20033D622 /* AppDelegate.swift */; };
 		FFC61938261D4ED20033D622 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61937261D4ED20033D622 /* SceneDelegate.swift */; };
 		FFC6193A261D4ED20033D622 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC61939261D4ED20033D622 /* ViewController.swift */; };
@@ -77,6 +78,7 @@
 		CEA19A1726249A19008B270E /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		CEA19A1A2624A56B008B270E /* ModalTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextFieldDelegate.swift; sourceTree = "<group>"; };
 		CEB0D07F26208945002BC69D /* ModalTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalTextViewDelegate.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		FF0BDF85262811AA00A580B6 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
 		FF0BDF89262813B300A580B6 /* SideBarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarNavigation.swift; sourceTree = "<group>"; };
 		FF0BDF8E2628185F00A580B6 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
@@ -89,6 +91,9 @@
 		FF5A098F2629204300234FFB /* ToDoListAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListAppTests.swift; sourceTree = "<group>"; };
 		FF5A09912629204300234FFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF5A099C262921E100234FFB /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+=======
+		CEE11FBF26290DAE002D7C55 /* EditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditManager.swift; sourceTree = "<group>"; };
+>>>>>>> feature/Network-PUT
 		FFC61932261D4ED20033D622 /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC61935261D4ED20033D622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFC61937261D4ED20033D622 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,8 +207,13 @@
 				CEA19A112624136D008B270E /* SizeManager.swift */,
 				CEA19A1726249A19008B270E /* ButtonManager.swift */,
 				FFC61978261EEB1A0033D622 /* CardManager.swift */,
+<<<<<<< HEAD
 				FF0BDFB226282DBE00A580B6 /* HistoryManager.swift */,
 				FF5A099C262921E100234FFB /* DateManager.swift */,
+=======
+				CE9A2B1C261E9A600097A940 /* ToDoTableViewDataSource.swift */,
+				CEE11FBF26290DAE002D7C55 /* EditManager.swift */,
+>>>>>>> feature/Network-PUT
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +441,7 @@
 				CEA19A1B2624A56B008B270E /* ModalTextFieldDelegate.swift in Sources */,
 				CE9A2B2D261EDB6C0097A940 /* CardTableView.swift in Sources */,
 				FFC6197A261EEB1A0033D622 /* Card.swift in Sources */,
+				CEE11FC026290DAE002D7C55 /* EditManager.swift in Sources */,
 				FFC6197B261EEB1A0033D622 /* CardManager.swift in Sources */,
 				FF0BDF86262811AA00A580B6 /* SideBarViewController.swift in Sources */,
 				CE9A2B2A261EDA3B0097A940 /* CardViewController.swift in Sources */,

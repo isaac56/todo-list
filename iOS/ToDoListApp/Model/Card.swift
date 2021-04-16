@@ -43,3 +43,15 @@ struct ReverseIndex {
         return total - 1 - index
     }
 }
+
+struct MovingInfo : Codable {
+    var prevCardId : Int?
+    var nextCardId : Int?
+    var to: String
+    
+    init() {
+        self.prevCardId = nil
+        self.nextCardId = nil
+        self.to = ""
+    }
+}

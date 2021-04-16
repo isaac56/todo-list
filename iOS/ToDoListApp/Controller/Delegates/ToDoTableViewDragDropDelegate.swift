@@ -69,12 +69,20 @@ extension ToDoTableViewDragDropDelegate: UITableViewDropDelegate {
         return true
     }
     
+    //MARK: 드래그를 밑에서 위로 하는 경우, 위에서 밑으로 하는 경우에 따라 로직이 다르다.
     func moveItem(at sourceIndex: Int, to destinationIndex: Int) {
         let srcIndex = cardManager.count(states: identifier) - 1 - sourceIndex
         let dstIndex = cardManager.count(states: identifier) - 1 - destinationIndex
         let card = cardManager.getCard(states: identifier, at: srcIndex)
         
-        cardManager.remove(states: identifier, at: srcIndex)
-        cardManager.insert(at: dstIndex, card: card)
+        cardManager.insert(at: dstIndex, card: card) { completion in
+            if completion {
+                if srcIndex < dstIndex {
+                    self.cardManager.removeOnlyUI(states: self.identifier, at: srcIndex)
+                } else {
+                    self.cardManager.removeOnlyUI(states: self.identifier, at: srcIndex + 1)
+                }
+            }
+        }
     }
 }

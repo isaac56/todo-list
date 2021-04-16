@@ -3,6 +3,7 @@ import UIKit
 
 protocol CardDelegate {
     func receiveCardData(_ card: Card)
+    func receiveEditedCardData(_ card: Card, index: Int)
 }
 
 
@@ -22,6 +23,7 @@ class ModalViewController: UIViewController {
     private var titleTextFieldDelegate = ModalTextFieldDelegate()
     private var buttonManager = ButtonManager()
     private var sizeManager = SizeManager()
+    private var editManager = EditManager()
     private var cardMaker = CardMaker()
     
     private var cardDelegate: CardDelegate!
@@ -36,6 +38,7 @@ class ModalViewController: UIViewController {
         setUpButton()
         setUpDelegate()
         setUpViewSize()
+        setEditMode()
     }
     
     func setUpView() {
@@ -78,6 +81,20 @@ class ModalViewController: UIViewController {
         self.cardDelegate = delegate
     }
     
+    func receiveEditCard(card: Card, index: Int) {
+        self.editManager.receive(card: card, index: index)
+        self.buttonManager.setEditMode()
+    }
+    
+    func setEditMode() {
+        if editManager.isEditMode() {
+            self.updateButton.setTitle(editManager.editingButtonTitle(), for: .normal)
+            self.titleLabel.text = editManager.editingTitleLabel()
+            self.titleTextField.text = editManager.editingTitle()
+            self.contentTextView.text = editManager.editingContent()
+        }
+    }
+    
     //MARK: IBAction 처리
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -89,10 +106,14 @@ class ModalViewController: UIViewController {
             return
         }
         
-        let card = cardMaker.makeCard(title: title, content: content)
-        NetworkManager.post(card: card)
-        self.cardDelegate.receiveCardData(card)
-        
+        if editManager.isEditMode() {
+            self.editManager.editCard(title: titleTextField.text ?? "", content: contentTextView.text)
+            self.cardDelegate.receiveEditedCardData(editManager.cardInfo(), index: editManager.cardIndexInfo())
+        } else {
+            let card = cardMaker.makeCard(title: title, content: content)
+            NetworkManager.post(card: card)
+            self.cardDelegate.receiveCardData(card)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
