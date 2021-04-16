@@ -40,7 +40,6 @@ class HistoryManager {
     }
     
     func classify(with history: JsonHistory) -> String {
-        print(history.action)
         switch history.action {
         case 0:
             return addHistoryForm(with: history)
@@ -68,12 +67,12 @@ class HistoryManager {
     }
     
     func removeHistoryForm(with history: JsonHistory) -> String {
-        let states = self.swtichStates(states: history.to)
+        let states = self.swtichStates(states: history.from)
         return "\(states)에서 \(history.cardTitle)을(를) 삭제하였습니다."
     }
     
     func updateHistoryForm(with history: JsonHistory) -> String {
-        let states = self.swtichStates(states: history.to)
+        let states = self.swtichStates(states: history.from)
         return "\(states)에서 \(history.cardTitle)을(를) 수정하였습니다."
     }
     

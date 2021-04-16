@@ -91,6 +91,12 @@ class CardViewController: UIViewController ,CardDelegate {
         self.toDoTableViewDelegate.editMenuPressed { card, index in
             self.presentEditModalViewController(card: card, index: index)
         }
+        self.inProgressViewDelegate.editMenuPressed { card, index in
+            self.presentEditModalViewController(card: card, index: index)
+        }
+        self.doneViewDelegate.editMenuPressed { card, index in
+            self.presentEditModalViewController(card: card, index: index)
+        }
     }
     
     func presentEditModalViewController(card: Card, index: Int) {
