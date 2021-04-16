@@ -40,14 +40,14 @@ class HistoryManager {
     
     func classify(with history: JsonHistory) -> String {
         switch history.action {
-        case "ADD":
+        case 0:
             return addHistoryForm(with: history)
-        case "MOVE":
-            return moveHistoryForm(with: history)
-        case "REMOVE":
+        case 1:
             return removeHistoryForm(with: history)
-        case "UPDATE":
+        case 2:
             return updateHistoryForm(with: history)
+        case 3:
+            return moveHistoryForm(with: history)
         default:
             return "Error"
         }
@@ -72,13 +72,13 @@ class HistoryManager {
         return "\(states)에서 \(history.cardTitle)을(를) 수정하였습니다."
     }
     
-    func swtichStates(states: String?) -> String {
+    func swtichStates(states: Int?) -> String {
         switch states {
-        case "TODO":
+        case 0:
             return "해야할 일"
-        case "DOING":
+        case 1:
             return "하고 있는 일"
-        case "DONE":
+        case 2:
             return "완료한 일"
         default:
             return "Error"

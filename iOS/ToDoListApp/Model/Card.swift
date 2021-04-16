@@ -43,3 +43,16 @@ struct ReverseIndex {
         return total - 1 - index
     }
 }
+
+// to 를 int 로 바꾸기
+struct MovingInfo : Codable {
+    var prevCardId : Int?
+    var nextCardId : Int?
+    var to: Int
+    
+    init() {
+        self.prevCardId = nil
+        self.nextCardId = nil
+        self.to = 0
+    }
+}
