@@ -9,6 +9,11 @@ import UIKit
 
 class HistoryCell: UITableViewCell {
 
+    @IBOutlet weak var historyImageView: UIImageView!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var historyContents: UILabel!
+    @IBOutlet weak var aboutTime: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 

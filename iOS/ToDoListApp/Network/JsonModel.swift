@@ -29,3 +29,17 @@ struct JsonCard: Codable {
     let deleted: Bool
 }
 
+// MARK: History 부분
+
+struct JsonHistoryBox: Codable {
+    let data: [JsonHistory]
+    let error: String?
+}
+
+struct JsonHistory: Codable {
+    let cardTitle: String
+    let action: String
+    let date: String
+    let from: String?
+    let to: String?
+}

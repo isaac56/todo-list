@@ -22,3 +22,26 @@ enum ContextMenu {
     static let Edit = "수정하기"
     static let Delete = "삭제하기"
 }
+
+enum Action: String {
+    case Add = "ADD"
+    case Move = "MOVE"
+    case Remove = "REMOVE"
+    case Update = "UPDATE"
+}
+
+class RandomNameFactory {
+    private (set) var name: String
+    
+    static let shared = RandomNameFactory()
+    
+    private init() {
+        self.name = ""
+        self.name = self.getName()
+    }
+    
+    private func getName() -> String {
+        let names = ["BMO", "Dumba", "아이작", "노을"]
+        return names.randomElement()!
+    }
+}

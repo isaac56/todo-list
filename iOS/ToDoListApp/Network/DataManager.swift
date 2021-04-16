@@ -14,6 +14,17 @@ class DataManager {
         }
     }
     
+    static func decodeHistoryBox(data: Data) -> [JsonHistory] {
+        let decoder = JSONDecoder()
+        
+        let historyBox = try? decoder.decode(JsonHistoryBox.self, from: data)
+        if let history = historyBox?.data {
+            return history
+        } else {
+            return []
+        }
+    }
+    
     static func decodeJsonResponseBox(data: Data) -> JsonCard? {
         let decoder = JSONDecoder()
         let cardBox = try? decoder.decode(JsonResponseBox.self, from: data)

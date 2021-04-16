@@ -41,7 +41,7 @@ class NetworkManager {
         request.httpMethod = httpMethod
         request.httpBody = httpBody
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data,  let jsonCard = DataManager.decodeJsonResponseBox(data: data) else {
                 return
@@ -64,6 +64,25 @@ class NetworkManager {
                 return
             }
             completion(false)
+        }.resume()
+    }
+    
+    static func getHistoryList(historyDelegate: HistoryManager) {
+        let httpMethod = "GET"
+        let url = URL(string: "http://13.209.62.240:8080/api/histories")
+        var request = URLRequest(url: url!)
+        request.httpMethod = httpMethod
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                return
+            }
+            let jsonHistorys = DataManager.decodeHistoryBox(data: data)
+            
+            DispatchQueue.main.async {
+                historyDelegate.inputHistorys(with: jsonHistorys) {
+                    NotificationCenter.default.post(name: HistoryManager.completeLoadHistory, object: historyDelegate)
+                }
+            }
         }.resume()
     }
 }

@@ -23,7 +23,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-wU-KPe">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPJ-wU-KPe">
                         <rect key="frame" x="72" y="37.5" width="244" height="64.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
@@ -31,7 +31,6 @@
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e34-fq-aJs">
                         <rect key="frame" x="16" y="16" width="40" height="40"/>
-                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="73l-6N-cwi"/>
                             <constraint firstAttribute="height" constant="40" id="vjr-Ba-0PM"/>
@@ -60,6 +59,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="aboutTime" destination="dZ7-Pm-59b" id="U0I-Np-sTt"/>
+                <outlet property="author" destination="KUN-UN-WHi" id="2gH-lP-76k"/>
+                <outlet property="historyContents" destination="YPJ-wU-KPe" id="q0i-V1-Aj1"/>
+                <outlet property="historyImageView" destination="e34-fq-aJs" id="8EG-kF-pGB"/>
+            </connections>
             <point key="canvasLocation" x="61" y="70"/>
         </tableViewCell>
     </objects>

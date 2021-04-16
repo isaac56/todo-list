@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 class HistoryTableViewDataSource: NSObject, UITableViewDataSource {
+
+    var historyManager: HistoryManager?
+    var userName = RandomNameFactory.shared.name
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        3
-    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return historyManager?.count() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -22,6 +22,14 @@ class HistoryTableViewDataSource: NSObject, UITableViewDataSource {
         else {
             return UITableViewCell()
         }
+
+        cell.historyImageView.image = historyManager?.setHistoryImage(at: indexPath.row)
+        cell.author.text = userName
+        cell.historyContents.text = historyManager?.getContents(index: indexPath.row)
+        cell.aboutTime.text = historyManager?.intervalTime(at: indexPath.row)
+        
         return cell
     }
 }
+
+
