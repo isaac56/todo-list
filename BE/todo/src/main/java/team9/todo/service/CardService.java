@@ -63,7 +63,7 @@ public class CardService {
         card.update(title, content);
         Card saved = cardRepository.save(card);
 
-        historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, null, null));
+        historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, saved.getColumnType(), null));
         return ResponseDTO.of(saved);
     }
 
