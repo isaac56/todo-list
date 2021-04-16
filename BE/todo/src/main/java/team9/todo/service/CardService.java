@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team9.todo.domain.Card;
-import team9.todo.domain.DTO.Card.ResponseDTO;
+import team9.todo.domain.DTO.Card.ResponseMovedDTO;
 import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
@@ -82,7 +82,7 @@ public class CardService {
     }
 
     @Transactional
-    public ResponseDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
+    public ResponseMovedDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
         Card prevCard = null;
         Card nextCard = null;
         if (prevCardId != null) {
@@ -116,7 +116,7 @@ public class CardService {
         if (from != to) {
             historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
         }
-        return ResponseDTO.of(saved, rebalanced);
+        return ResponseMovedDTO.of(saved, rebalanced);
     }
 
     @Transactional
