@@ -51,7 +51,7 @@ extension ToDoTableViewDragDropDelegate: UITableViewDropDelegate {
             destinationIndexPath = IndexPath(row: 0, section: section)
         }
         
-    
+        
         
         for item in coordinator.items {
             if let sourceIntePath = item.sourceIndexPath {
@@ -74,12 +74,16 @@ extension ToDoTableViewDragDropDelegate: UITableViewDropDelegate {
         let srcIndex = cardManager.count(states: identifier) - 1 - sourceIndex
         let dstIndex = cardManager.count(states: identifier) - 1 - destinationIndex
         let card = cardManager.getCard(states: identifier, at: srcIndex)
-        
-        cardManager.insert(at: dstIndex, card: card) { completion in
-            if completion {
-                if srcIndex < dstIndex {
+                
+        if srcIndex < dstIndex{
+            cardManager.insert(at: dstIndex + 1, card: card) { completion in
+                if completion {
                     self.cardManager.removeOnlyUI(states: self.identifier, at: srcIndex)
-                } else {
+                }
+            }
+        } else {
+            cardManager.insert(at: dstIndex, card: card) { completion in
+                if completion {
                     self.cardManager.removeOnlyUI(states: self.identifier, at: srcIndex + 1)
                 }
             }
