@@ -12,26 +12,23 @@ public class ResponseDTO {
 
     private double priority;
 
-    private CardColumn columnType;
+    private int columnType;
 
     private boolean deleted;
 
-    private boolean rebalanced;
-
-    private ResponseDTO(Long id, String title, String content, double priority, CardColumn columnType, boolean deleted, boolean rebalanced) {
+    ResponseDTO(Long id, String title, String content, double priority, CardColumn columnType, boolean deleted) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.priority = priority;
-        this.columnType = columnType;
+        this.columnType = columnType.ordinal();
         this.deleted = deleted;
-        this.rebalanced = rebalanced; // 클라이언트에서 true 일때 카드목록을 전체 다 불러와야함.
     }
 
-    public static ResponseDTO of(Card entity, boolean rebalanced) {
+    public static ResponseDTO of(Card entity) {
         return new ResponseDTO(entity.getId(), entity.getTitle(),
                 entity.getContent(), entity.getPriority(),
-                entity.getColumnType(), entity.isDeleted(), rebalanced);
+                entity.getColumnType(), entity.isDeleted());
     }
 
     public Long getId() {
@@ -50,15 +47,11 @@ public class ResponseDTO {
         return priority;
     }
 
-    public CardColumn getColumnType() {
+    public int getColumnType() {
         return columnType;
     }
 
     public boolean isDeleted() {
         return deleted;
-    }
-
-    public boolean isRebalanced() {
-        return rebalanced;
     }
 }

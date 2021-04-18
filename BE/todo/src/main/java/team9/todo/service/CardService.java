@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team9.todo.domain.Card;
 import team9.todo.domain.DTO.Card.ResponseDTO;
+import team9.todo.domain.DTO.Card.ResponseMovedDTO;
 import team9.todo.domain.History;
 import team9.todo.domain.User;
 import team9.todo.domain.enums.CardColumn;
@@ -16,6 +17,7 @@ import team9.todo.repository.CardRepository;
 import team9.todo.repository.HistoryRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static team9.todo.domain.Card.PRIORITY_STEP;
 
@@ -37,7 +39,7 @@ public class CardService {
     }
 
     @Transactional
-    public Card create(String title, String content, CardColumn cardColumn, User user) {
+    public ResponseDTO create(String title, String content, CardColumn cardColumn, User user) {
         logger.debug("card 생성 요청: {}, {}, {}", cardColumn, title, content);
 
         double priority = getNextPriority(cardColumn, user);
@@ -45,23 +47,24 @@ public class CardService {
         Card saved = cardRepository.save(card);
 
         historyRepository.save(new History(saved.getId(), HistoryAction.ADD, null, saved.getColumnType()));
-        return saved;
+        return ResponseDTO.of(saved);
     }
 
-    public List<Card> getList(CardColumn cardColumn, User user) {
+    public List<ResponseDTO> getList(CardColumn cardColumn, User user) {
         logger.debug("{}의 카드 목록 요청", cardColumn);
-        return cardRepository.findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(user.getId(), cardColumn.name());
+        List<Card> cardList = cardRepository.findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(user.getId(), cardColumn.name());
+        return cardList.stream().map(ResponseDTO::of).collect(Collectors.toList());
     }
 
     @Transactional
-    public Card update(long cardId, String title, String content, User user) {
+    public ResponseDTO update(long cardId, String title, String content, User user) {
         logger.debug("{}번 카드의 내용 수정 요청", cardId);
         Card card = getCard(cardId, user);
         card.update(title, content);
         Card saved = cardRepository.save(card);
 
-        historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, null, null));
-        return saved;
+        historyRepository.save(new History(saved.getId(), HistoryAction.UPDATE, saved.getColumnType(), null));
+        return ResponseDTO.of(saved);
     }
 
     private double renderPriority(Card prevCard, Card nextCard, CardColumn cardColumn, User user) {
@@ -82,7 +85,7 @@ public class CardService {
     }
 
     @Transactional
-    public ResponseDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
+    public ResponseMovedDTO move(long cardId, Long prevCardId, Long nextCardId, CardColumn to, User user) {
         Card prevCard = null;
         Card nextCard = null;
         if (prevCardId != null) {
@@ -116,7 +119,7 @@ public class CardService {
         if (from != to) {
             historyRepository.save(new History(saved.getId(), HistoryAction.MOVE, from, to));
         }
-        return ResponseDTO.of(saved, rebalanced);
+        return ResponseMovedDTO.of(saved, rebalanced);
     }
 
     @Transactional
@@ -145,7 +148,7 @@ public class CardService {
     }
 
     private void rebalancePriority(CardColumn cardColumn, User user) {
-        List<Card> cards = getList(cardColumn, user);
+        List<Card> cards = cardRepository.findAllByUserAndColumnTypeAndDeletedFalseOrderByPriority(user.getId(), cardColumn.name());
         double priority = 0.0;
         for (Card card : cards) {
             priority += PRIORITY_STEP;

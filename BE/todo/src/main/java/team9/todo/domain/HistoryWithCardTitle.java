@@ -1,16 +1,19 @@
 package team9.todo.domain;
 
+import team9.todo.domain.enums.CardColumn;
+import team9.todo.domain.enums.HistoryAction;
+
 import java.time.LocalDateTime;
 
 public class HistoryWithCardTitle {
 
     private final String cardTitle;
-    private final String action;
+    private final HistoryAction action;
     private final LocalDateTime date;
-    private final String from;
-    private final String to;
+    private final CardColumn from;
+    private final CardColumn to;
 
-    public HistoryWithCardTitle(String cardTitle, String action, LocalDateTime date, String from, String to) {
+    public HistoryWithCardTitle(String cardTitle, HistoryAction action, LocalDateTime date, CardColumn from, CardColumn to) {
         this.cardTitle = cardTitle;
         this.action = action;
         this.date = date;
@@ -22,7 +25,7 @@ public class HistoryWithCardTitle {
         return cardTitle;
     }
 
-    public String getAction() {
+    public HistoryAction getAction() {
         return action;
     }
 
@@ -30,11 +33,11 @@ public class HistoryWithCardTitle {
         return date;
     }
 
-    public String getFrom() {
+    public CardColumn getFrom() {
         return from;
     }
 
-    public String getTo() {
+    public CardColumn getTo() {
         return to;
     }
 }

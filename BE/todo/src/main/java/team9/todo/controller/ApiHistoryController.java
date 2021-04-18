@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team9.todo.domain.ApiResult;
-import team9.todo.domain.HistoryWithCardTitle;
+import team9.todo.domain.DTO.History.ResponseDTO;
 import team9.todo.domain.User;
 import team9.todo.service.HistoryService;
 
@@ -28,7 +28,7 @@ public class ApiHistoryController {
     }
 
     @GetMapping
-    public ApiResult<List<HistoryWithCardTitle>> getHistoryOfUser(HttpSession httpSession) {
+    public ApiResult<List<ResponseDTO>> getHistoryOfUser(HttpSession httpSession) {
         logger.debug("history 목록 요청");
         User user = getUser(httpSession);
 
